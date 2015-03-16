@@ -1,0 +1,22 @@
+<script src="/global.js"></script>
+
+<p>Logged in as <strong><%= @current_user.name %></strong>.</p>
+
+<% @posts.each do |post| %>
+  <div class="post">
+    <h1><%= post.title %></h1>
+    <p><%= post.body %></p>
+
+    <div id="like-div-<%= post.id %>" class="likes">
+      <% if @current_user.liked_post?(post.id) %>
+        <em>You like this post!</em>
+      <% else %>
+        <a href="javascript:void(0);" id="like-link-<%= post.id %>" class="like-links" data="/like/<%= post.id %>">Like</a>
+      <% end %>
+
+      <span id="likes-span-<%= post.id %>">
+        <strong id="likes-<%= post.id %>" ><%= post.likes %> likes</strong>
+      </span>
+    </div>
+  </div>
+<% end %>
