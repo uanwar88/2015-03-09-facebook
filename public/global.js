@@ -17,12 +17,10 @@ window.onload = function() {
   function display_new_likes(result) {
     var span_id = "likes-span-" + result["post_id"];
     var likes_span = document.getElementById(span_id);
-    var element_id = "likes-" + result["post_id"];
-    var strong_element = document.getElementById(element_id);
-    likes_span.removeChild(strong_element);
+    remove_like_link(result["post_id"]);
+    likes_span.removeChild(likes_span.childNodes[1]);
     create_new_element("You like this post! " + result["new_number_of_likes"] + " likes");
     likes_span.appendChild(new_strong_element);
-    remove_like_link(result["post_id"]);
   }
 
   function like() {
